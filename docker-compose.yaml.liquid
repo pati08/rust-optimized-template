@@ -1,0 +1,22 @@
+services:
+  {{package-name}}:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Uncomment to enable sqlite database
+      # DATABASE_URL: sqlite:db/{{package-name}}.db
+      RUST_LOG: info
+    volumes:
+      # Uncomment to enable sqlite database
+      #- ./dev_data:/{{package-name}}/db
+    develop:
+      watch:
+        - path: src
+          action: rebuild
+        - path: Cargo.toml
+          action: rebuild
+        - path: Cargo.lock
+          action: rebuild
