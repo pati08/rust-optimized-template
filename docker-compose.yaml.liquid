@@ -1,5 +1,5 @@
 services:
-  {{package-name}}:
+  {{project-name}}:
     build:
       context: .
       dockerfile: Dockerfile
@@ -7,11 +7,11 @@ services:
       - "3000:3000"
     environment:
       # Uncomment to enable sqlite database
-      # DATABASE_URL: sqlite:db/{{package-name}}.db
+      # DATABASE_URL: sqlite:db/{{project-name}}.db
       RUST_LOG: info
     volumes:
       # Uncomment to enable sqlite database
-      #- ./dev_data:/{{package-name}}/db
+      #- ./dev_data:/{{project-name}}/db
     develop:
       watch:
         - path: src
